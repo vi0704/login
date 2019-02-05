@@ -1,0 +1,27 @@
+<body bgcolor="grey">
+<form method="POST">
+        {% csrf_token %}
+        <p>
+            <label><b>Username/E-mail</b></label>
+            <input type="text" name="username">
+        </p>
+        <p>
+            <label><b>Password</b></label>
+            <input type="password" name="password">
+        </p>
+        <button type="submit">Login</button>
+    </form>
+
+ {% for message in messages %}
+
+                    <div class="alert alert-success">
+                        <a class="close" href="#" data-dismiss="alert">×</a>
+
+                        <b>{{ message }}</b>
+
+                    </div>
+            {% endfor %}
+
+ <th><b>Forgot Password?</b><p><a href="/reset-password"> click here</a></p>
+
+     </body>

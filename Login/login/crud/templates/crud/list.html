@@ -1,0 +1,59 @@
+
+<body style="back">
+<style>
+.center {
+    position: absolute;
+    top: 8px;
+    left: 900px;
+    font-size: 18px;
+        }
+
+.topleft {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 18px;
+        }
+</style>
+
+
+
+
+{% if user.is_authenticated %}
+<div  align="right"><th ><form method="get" action="/logout">
+    <button name="logout" type="submit"> Logout</button></form></th></div>
+<div class="center">
+<th><form method="get" action="/change">
+    <button name="login" type="submit"> Change Password</button></form></th></div>
+<div class="topleft"><th><form method="get" action="/create">
+    <button name="create" type="submit"> Add Details</button></form></th></div>
+
+{% else %}
+    <th><form method="get" action="/login">
+    <button name="login" type="submit"> Login</button></form></th>
+
+{% endif %}
+
+
+
+     <table style="width:100%" >
+  <tr style="border:1px solid black">
+    <th style="border:1px solid black">Name</th>
+    <th style="border:1px solid black">Update</th>
+    <th style="border:1px solid black"> Delete</th>
+  </tr>
+
+         {% for person in name %}
+  <tr style="text-align:center">
+      <td style="border:1px solid black"><a href="http://127.0.0.1:8000/detail/{{person.id}}">{{ person.name }}</a></td>
+    <td style="border:1px solid black"><form method="get" action="/update/{{person.id}}">
+    <button type="submit"> Update</button>
+</form></td>
+      <td style="border:1px solid black">  <form method="get" action="/delete/{{person.id}}">
+    <button type="submit"> Delete</button>
+</form></td>
+  </tr>
+    {% endfor %}
+</table>
+
+</body>
